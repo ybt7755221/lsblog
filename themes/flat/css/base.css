@@ -1,0 +1,47 @@
+body{ padding-top:51px; background:#F1F1F1; }
+a:hover{text-decoration: none;}
+.user_top{ max-width:1300px; margin: 0 auto; padding: 2px 45px; text-align: center;}
+.text-con-cate{  line-height: .5em; padding: .5em 15px;  }
+.text-con{  line-height: 1.5em; padding: 25px 40px;  }
+.text-lan{ color:#75e3db; }
+a.text-lan:hover{color:#292929;}
+.no-border{ border:0; }
+.bs-label{ padding-top: .4em; font-size: 16px; background:#F5F5F5; float:left; margin-top:-17px; margin-left:-17px; }
+.font-Big{ font-size: 24px !important; }
+.font-Middle{ font-size: 14px !important; }
+.font-Nomal{ font-size: 12px !important; }
+.font-Small{ font-size: 10px !important; }
+.line{width: 100%; min-height: 1px; clear: both; height:1px; max-height: 1px; padding: 0; margin: 0;}
+.bg-gold{ background:#efefef !important; }
+.bg-lan-shen{ background:#17c7bd !important;}
+.bg-white{ background:#fff !important; }
+.bg-silvery{ background:#E1E1E1 !important; }
+.bg-black{ background:#292929 !important; }
+.gold-header{ min-width:140px; text-align:center; color:#efefef; }
+.text-white{ color:#FFFFFF !important; }
+.text-grayh{ color:#8f8f8f !important;}
+.text-gold{ color:#d2d2d2 !important; }
+.text-brown{ color:#292929 !important; }
+.hang{ min-height:10px; }
+.h1Small{ font-size:12px;color:#7d785b; }
+.bs-gold-header{ background-color:#efefef; padding: 10px 15px; min-height:160px; }
+.navbar-gold{ background-color:#efefef; border-bottom:2px #d7ca99 solid;}
+a{ color:#7d785b; }
+a:hover{ color:#7d785b; }
+.navbar-gold .navbar-nav li a:hover,
+.navbar-gold .navbar-nav li a:active,
+.navbar-gold .active{ background-color:#efefef; color:#FFFFFF !important; }
+.navbar-gold button.navbar-toggle{ background-color:#efefef; }
+.col-tag{float:left; margin:4px; padding:6px; font-weight:bolder; text-align:center; }
+.panel-small{height:40px; margin:0; padding:0 15px; line-height:25px;}
+.artile-tag{ height:40px; line-height: 60px; font-size:14px;}
+.label-more{position:absolute; right:0; bottom:8px; font-size:8px;}
+.post-info{padding:0px; margin: 2px 0;}
+.post-content{overflow:hidden; padding: 3px; margin: 10px;}
+.post-tag{ margin: 4px 15px; font-size: 12px; }
+.view-bottom{padding:5px 0 0;}
+.read_more{ background: #75e3db; padding: 8px; height:22px; line-height:22px; color: #fff; }
+a.read_more:hover{ background: #17c7bd; color:#fff; }
+.font-bolder{font-weight: bold;}
+.text-excerpt{ max-width: 1000px; min-width: 300px; overflow: hidden; margin: 0 auto; }
+#info{ background:#E1E1E1; color:red; }
