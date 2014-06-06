@@ -2,7 +2,7 @@ var urlRoot = '/index.php';
 $( document ).ready( function(){
    $( '#button' ).click( function(){
         var theme_id = $( 'input[type=radio][name=theme_id]:checked' ).val();
-        $.post( urlRoot + '/admin/site/theme', { theme_id : theme_id }, 
+        $.post( urlRoot + '/manage/site/theme', { theme_id : theme_id }, 
             function(txt){
                 if ( txt == 'success' )
                 {
@@ -37,7 +37,7 @@ $( document ).ready( function(){
         }
         else
         {
-            $.post( urlRoot + '/admin/Users/updatePassword', 
+            $.post( urlRoot + '/manage/Users/updatePassword', 
                 { password : oldPass, newPasswd : newPass, resPasswd : repPass },
                 function( result ){
                     $( '#danger' ).html( result );
@@ -54,7 +54,7 @@ function saveBackUp( id )
     var backup = $(tag).val();
     $.ajax({
             type : 'POST', 
-            url : urlRoot + '/admin/ablum/saveBackUp',
+            url : urlRoot + '/manage/ablum/saveBackUp',
             data : { ajax : 'AJAX', backup : backup, id : id },
             timeout : 1000, 
             error : function(){ alert( 'Error loading PHP document' ); }, 
@@ -85,7 +85,7 @@ function ajaxFileUpload()
 		$.ajaxFileUpload
 		(
 			{
-				url : urlRoot + '/admin/Users/AjaxUpload',
+				url : urlRoot + '/manage/Users/AjaxUpload',
 				secureuri:false,
 				fileElementId:'fileToUpload',
 				dataType: 'json',
