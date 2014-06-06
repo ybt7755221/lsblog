@@ -13,7 +13,7 @@ class Controller extends CController
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
-    protected $_page = 20;
+        protected $_page = 20;
 	public $menu=array();
 	/**
 	 * @var array the breadcrumbs of the current page. The value of this property will
@@ -21,4 +21,10 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+        
+        public function getFooter(){
+            $sql = 'SELECT `url`, `lname` FROM `{{links}}` WHERE `visible` = 1 ORDER BY `id`';
+            $command = Yii::app()->db->createCommand($sql);
+            return $command->queryAll();
+        }
 }

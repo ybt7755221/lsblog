@@ -18,6 +18,13 @@
 <div class="clear"></div>
 <!--footer-->
 <footer class="well footer text-center bg-gold" style="margin:0;">
+    <div class="row">
+        <?php 
+        $links = $this->getFooter();
+        foreach( $links as $val ): ?>
+        <div class="col-md-3 col-lg-3 col-xs-6"><a class="text-grayh" href="<?php echo Yii::app()->createAbsoluteUrl($val['url']); ?>" target="_blank" ><?php echo CHtml::encode($val['lname']); ?></a></div>
+        <?php endforeach; ?>
+    </div>
     <?php echo CHtml::encode( Yii::app()->name ); ?> 版权所有 © 2012-2014　<?php echo CHtml::encode( WEB_BAK ); ?>
 </footer>
 <script src="<?php echo Yii::app()->theme->baseUrl;?>/js/jquery-1.8.3.min.js"></script> 

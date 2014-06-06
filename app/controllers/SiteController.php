@@ -47,7 +47,6 @@ class SiteController extends Controller
             unset( $masterArr['uid'] );
             unset( $masterArr['logo'] ); 
             unset( $masterArr['description'] );
-            
             /*首页分类 home data*/
             $categorySql = 'SELECT `id`, `cate_name`, `cate_english`, `description`, `cate_image` FROM `{{categorise}}` WHERE `visible` = 1 AND `fid` = 0 ORDER BY `cate_order`, `id`';
             $command = $dbConnection->createCommand( $categorySql );
