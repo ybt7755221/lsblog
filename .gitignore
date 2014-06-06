@@ -1,0 +1,4 @@
+*.bin
+nbproject/*
+app/runtime/*
+assets
