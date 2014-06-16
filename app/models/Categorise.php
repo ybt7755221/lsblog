@@ -13,6 +13,8 @@
  * @property integer $cate_order
  * @property integer $visible
  * @property string $path
+ * @property integer $type
+ * @property string $url
  */
 class Categorise extends CActiveRecord
 {
@@ -33,14 +35,14 @@ class Categorise extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fid, cate_name, cate_english, description, cate_image, path', 'required'),
-			array('cate_order, visible', 'numerical', 'integerOnly'=>true),
+			array('cate_order, visible, type', 'numerical', 'integerOnly'=>true),
 			array('fid, path', 'length', 'max'=>20),
 			array('cate_name', 'length', 'max'=>60),
-			array('cate_english', 'length', 'max'=>64),
+			array('cate_english, url', 'length', 'max'=>64),
 			array('cate_image', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fid, cate_name, cate_english, description, cate_image, cate_order, visible, path', 'safe', 'on'=>'search'),
+			array('id, fid, cate_name, cate_english, description, cate_image, cate_order, visible, path, type, url', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +54,7 @@ class Categorise extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'posts' => array( self::HAS_MANY, 'Posts', 'id' )
+                    'posts' => array( self::HAS_MANY, 'Posts', 'id' )
 		);
 	}
 
@@ -71,6 +73,8 @@ class Categorise extends CActiveRecord
 			'cate_order' => 'Cate Order',
 			'visible' => 'Visible',
 			'path' => 'Path',
+			'type' => 'Type',
+			'url' => 'Url',
 		);
 	}
 
@@ -101,6 +105,8 @@ class Categorise extends CActiveRecord
 		$criteria->compare('cate_order',$this->cate_order);
 		$criteria->compare('visible',$this->visible);
 		$criteria->compare('path',$this->path,true);
+		$criteria->compare('type',$this->type);
+		$criteria->compare('url',$this->url,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -117,85 +123,100 @@ class Categorise extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-    
-     //分类处理
-    public function getFidCate($type = "")
-    {
-        $connection = Yii::app()->db;
-        /**
-         * 如需无限分类请替将此使用此sql语句
-         * $sql = "SELECT `id`, `cate_name`, `path` FROM `{{categorise}}` ORDER BY `path` `cate_order`";
-        */
-        $sql = "SELECT `id`, `cate_name`, `path` FROM `{{categorise}}` where `fid` = 0 ORDER BY `cate_order`";
-        $command = $connection->createCommand($sql);
-        $result = $command->queryAll();
-        if ($type == "Controller")
-        /**
-         * 如需无限分类请替将此语句替换下面语句
-         * $arr = array('0'=>'顶级分类');
-        */
-            return array('0'=>'顶级分类');
-        else
-            $arr = array();
-        foreach($result as $value)
+        //分类处理
+        public function getFidCate($type = "")
         {
-            $arr[$value['id']] = $this->showPrefix(substr_count($value['path'],'-')).$value['cate_name'];
-        }
-        return $arr;
-    }
-    
-    protected function showPrefix($num)
-    {
-        $result = '';
-        if ($num == 1)
-            return $result;
-        else
-        { 
-            for($i = 1; $i < $num; $i++)
+            $connection = Yii::app()->db;
+            /**
+             * 如需无限分类请替将此使用此sql语句
+             * $sql = "SELECT `id`, `cate_name`, `path` FROM `{{categorise}}` ORDER BY `path` `cate_order`";
+            */
+            $sql = "SELECT `id`, `cate_name`, `path` FROM `{{categorise}}` where `fid` = 0 ORDER BY `cate_order`";
+            $command = $connection->createCommand($sql);
+            $result = $command->queryAll();
+            if ($type == "Controller")
+            /**
+             * 如需无限分类请替将此语句替换下面语句
+             * $arr = array('0'=>'顶级分类');
+            */
+                return array('0'=>'顶级分类');
+            else
+                $arr = array();
+            foreach($result as $value)
             {
-                $result .= "|→→";
+                $arr[$value['id']] = $this->showPrefix(substr_count($value['path'],'-')).$value['cate_name'];
             }
+            return $arr;
+        }
+
+        protected function showPrefix($num)
+        {
+            $result = '';
+            if ($num == 1)
+                return $result;
+            else
+            { 
+                for($i = 1; $i < $num; $i++)
+                {
+                    $result .= "|→→";
+                }
+                return $result;
+            }
+        }
+
+        public function getVisible( $id = "" )
+        {
+           $state = array('1'=>'启用','2'=>'禁用');
+           $result = '';
+            if (empty($id))
+                $result = $state;
+            else
+                $result = $state[$id];
             return $result;
         }
-    }
-    
-    public function getVisible( $id = "" )
-    {
-       $state = array('1'=>'启用','2'=>'禁用');
-       $result = '';
-        if (empty($id))
-            $result = $state;
-        else
-            $result = $state[$id];
-        return $result;
-    }
-    
-    /*网站顶部导航*/
-    public function getItems( $id = '' )
-    {
-        $categorySql = 'SELECT `id`, `cate_name`, `cate_english`, `cate_image` FROM `{{categorise}}` WHERE `visible` = 1 AND `fid` = 0 ORDER BY `cate_order`, `id`';
-        $command = Yii::app()->db->createCommand( $categorySql );
-        $navArr = $command->queryAll();
-        $num = count($navArr);
-        $items = array();
-        $items[0] =  array( 'label'=>'首页分类', 'url' => array( '/site/index' ) );
-        if( empty( $id ) )
-           $items[0]['itemOptions'] = array( 'class' => 'active' );
-        if( empty( $navArr ) )
-            return $items;           
-        foreach($navArr AS $idx => $result){
-            $nums = $idx + 1;
-            $items[$nums] = array(
-                'label' => $result['cate_name'],
-                'url' => Yii::app()->createAbsoluteUrl( '/posts/index',array( 'id' => $result['id'] ) ),
-            );
-            if ( !empty( $id ) && $id == $result['id'] )
-                $items[$nums]['itemOptions'] = array( 'class' => 'active' );
+        
+        public function getType( $id = "" ) {
+            $state = array('1'=>'site','2'=>'localurl', '3'=>'url', '4' => 'page');
+            $result = '';
+            if (empty($id))
+                $result = $state;
+            else
+                $result = $state[$id];
+            return $result;
+        }  
+
+        /*网站顶部导航*/
+        public function getItems( $id = '' )
+        {
+            $categorySql = 'SELECT `id`, `cate_name`, `cate_english`, `cate_image`, `type`, `url` FROM `{{categorise}}` WHERE `visible` = 1 AND `fid` = 0 ORDER BY `cate_order`, `id`';
+            $command = Yii::app()->db->createCommand( $categorySql );
+            $navArr = $command->queryAll();
+            $num = count($navArr);
+            $items = array();
+            if( empty( $id ) )
+            $items[0]['itemOptions'] = array( 'class' => 'active' );
+            if( empty( $navArr ) )
+                return $items;         
+            foreach($navArr AS $idx => $result){
+                $nums = $idx + 1;
+                $items[$nums] = array( 'label' => $result['cate_name'] );
+                switch ( $result['type'] ) {
+                            case '1' : 
+                                    $items[$nums]['url'] = Yii::app()->createAbsoluteUrl( '/posts/index',array( 'id' => $result['id'] ) );
+                                    break;
+                            case '2' : 
+                                    $items[$nums]['url'] = Yii::app()->createAbsoluteUrl( $result['url'] );
+                                    break;
+                            case '3' : 
+                                    $items[$nums]['url'] = Yii::app()->createAbsoluteUrl( $result['url'] );
+                                    break;
+                            default : 
+                                    $items[$nums]['url'] = Yii::app()->createAbsoluteUrl( '/posts/index',array( 'id' => $result['id'] ) );
+                                    break;
+                }
+                if ( !empty( $id ) && $id == $result['id'] )
+                    $items[$nums]['itemOptions'] = array( 'class' => 'active' );
+            }
+            return $items;
         }
-        $items[ $num + 2 ] = array( 'label'=>'相册展示', 'url' => Yii::app()->baseUrl.'/ablum' );
-        if ( !empty( $id ) && $id == -1 )
-            $items[ $num + 2 ]['itemOptions'] = array( 'class' => 'active' );
-     
-        return $items;
-    }
 }

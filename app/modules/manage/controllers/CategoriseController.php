@@ -56,16 +56,15 @@ class CategoriseController extends AController
 	public function actionCreate()
 	{
 		$model=new Categorise;
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation( $model );
 
 		if( isset( $_POST['Categorise'] ) )
 		{
 			$model->attributes=$_POST['Categorise'];
-            $model->path = '0';
-            $image = CUploadedFile::getInstance( $model,'cate_image' );
-            $model->cate_image = $this->uploadImg( $image );
+                        $model->path = '0';
+                        $image = CUploadedFile::getInstance( $model,'cate_image' );
+                        $model->cate_image = $this->uploadImg( $image );
 			if( $model->save() )
             {
                 $path = $model->fid ;

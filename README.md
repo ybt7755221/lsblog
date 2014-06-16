@@ -10,3 +10,8 @@ Modified flat template layout.
 V1.140605 --2014.06.05
 Finished all function in lsblog_V1.
 Finished flat template modify.
+
+V1.140616 --2014.06.16
+Modify category.(Addition localurl, site, url, page in category.)
+Modify flat demo image in Theme.
+

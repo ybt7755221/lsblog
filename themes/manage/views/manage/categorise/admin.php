@@ -22,32 +22,31 @@ $this->menu=array(
 	'id'=>'categorise-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-    'pager'=>array(  
-            'class'=>'myPager',  
-            'header'=>'',  
-            'prevPageLabel'=>'上一页',  
-            'nextPageLabel'=>'下一页',  
-            //'cssFile'=>'',  
-    ),
+        'pager'=>array(  
+                'class'=>'myPager',  
+                'header'=>'',  
+                'prevPageLabel'=>'上一页',  
+                'nextPageLabel'=>'下一页',  
+                //'cssFile'=>'',  
+        ),
 	'columns'=>array(
 		'cate_name',
 		'cate_english',
 		'description',
 		'cate_image',
-        'cate_order',
-        array(
-            'name' => 'visible',
-            'value' => 'Categorise::model()->getVisible( "$data->visible" )',
-        ),
-		
-		/*
-		'cate_order',
-		'visible',
-		'path',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-            'template'=>'{update}{delete}',
-		),
+                'cate_order',
+                array(
+                    'name' => 'visible',
+                    'value' => 'Categorise::model()->getVisible( "$data->visible" )',
+                ),
+                        /*
+                        'cate_order',
+                        'visible',
+                        'path',
+                        */
+                array(
+                    'class'=>'CButtonColumn',
+                    'template'=>'{update}{delete}',
+                ),
 	),
 )); ?>

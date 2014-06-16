@@ -36,10 +36,20 @@
 		<?php echo $form->textField($model,'cate_name',array('class'=>'form-control')); ?>
 	</div>
     
-    <div class="input-group col-md-6 col-xs-12">
+        <div class="input-group col-md-6 col-xs-12">
 		<?php echo $form->label($model,'cate_english',array('class'=>'input-group-addon')); ?>
 		<?php echo $form->textField($model,'cate_english',array('class'=>'form-control')); ?>
 	</div>
+</div><br />
+<div class="row" >
+        <div class="input-group col-md-6 col-xs-12">
+		<?php echo $form->label($model,'type',array('class'=>'input-group-addon')); ?>
+		<?php echo $form->dropDownList($model, 'type', Categorise::model()->getType(), array( 'id' => 'type', 'class' => 'form-control')); ?>
+	</div>
+        <div class="input-group col-md-6 col-xs-12">
+		<?php echo $form->label($model,'url',array('class'=>'input-group-addon')); ?>
+                <?php echo $form->textField($model,'url',array( 'id' => 'url', 'class'=>'form-control')); ?>
+        </div>
 </div><br />
 	<div class="input-group">
 		<?php echo $form->label($model,'description',array('class'=>'input-group-addon')); ?>
