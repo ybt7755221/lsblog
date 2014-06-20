@@ -148,8 +148,12 @@ class PostsController extends Controller
         $model->comment_content = $content;
         $model->is_show = $show;
         Yii::app()->session['commentTime'] = $_SERVER['REQUEST_TIME'];
-        if ( $model->save() )
+        if ( $model->save() ) {
+            $sql = 'UPDATE `{{posts}}` SET `comment_count` = `comment_count` + 1';
+            $db = Yii::app()->db->createCommand($sql);
+            $db->execute();
             echo 'succ';
+        }
     }
     
     private function check_email( $email ){

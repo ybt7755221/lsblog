@@ -44,8 +44,8 @@ Yii::app()->clientScript->registerScriptFile( Yii::app()->theme->baseUrl . '/js/
 	</div><br />
 
 	<div class="input-group" >
-        <?php echo $form->textArea($model,'content',array('id'=>'myEditor', 'rows'=>3)); ?>
-    </div><br />
+            <?php echo $form->textArea($model,'content',array('id'=>'myEditor', 'name'=>'myEditor', 'rows'=>3)); ?>
+        </div><br />
 
 	<div class="input-group">
 		<?php echo $form->label($model,'tag_id',array('class'=>'input-group-addon')); ?>
