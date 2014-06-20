@@ -1,7 +1,7 @@
 <?php
 Yii::app()->clientScript->registerCssFile( Yii::app()->baseUrl. '/ueditor/themes/default/css/ueditor.css' );
 Yii::app()->clientScript->registerScriptFile( Yii::app()->baseUrl . '/ueditor/ueditor.config.js',CClientScript::POS_END);
-Yii::app()->clientScript->registerScriptFile( Yii::app()->baseUrl . '/ueditor/ueditor.all.js',CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile( Yii::app()->baseUrl . '/ueditor/ueditor.min.js',CClientScript::POS_END);
 Yii::app()->clientScript->registerScriptFile( Yii::app()->theme->baseUrl . '/js/base.js',CClientScript::POS_END);
 ?>
 <div class="form">

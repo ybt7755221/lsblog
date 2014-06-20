@@ -20,7 +20,7 @@ $this->renderPartial( '../site/_topNav', array('cate_id' => $post['cate_id'] ) )
         <div class="col-sm-8 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading text-center bg-white panel-small">
-                        <p class="text-left artile-tag text-grayh">author: <?php echo CHtml::encode( $post['nickname'] );?> | <?php echo date( 'Y-m-d H:i:s', $post['create_time'] );?> 发布 | <?php echo $post['comment_count']; ?> comments</p>
+                        <p class="text-left artile-tag text-grayh">文章作者: <?php echo CHtml::encode( $post['nickname'] );?> | <?php echo date( 'Y-m-d H:i:s', $post['create_time'] );?> 发布 | <?php echo $post['comment_count']; ?> 评论</p>
                 </div>
                 <div class="clearfix"></div>
                 <div class="panel-body post-content" style="overflow:hidden; padding: 3px;">

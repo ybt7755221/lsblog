@@ -10,8 +10,8 @@
                     <h2 class="text-center"><a class="text-lan" href="<?php echo Yii::app()->createUrl( '/posts/view', array( 'id' => $data['id'], 'name' => $data['title'] ) );?>"><?php echo CHtml::encode( $data['title'] ); ?></a></h2>
                         <p class="line bg-silvery"></p>
                         <p class="row post-info">
-                            <span class="col-lg-6 col-xs-6 col-md-6 col-sm-6 text-left text-grayh"><?php echo $data['author']; ?></span>
-                            <span class="col-lg-6 col-xs-6 col-md-6 col-sm-6 text-right text-grayh"><?php echo date('m-d-Y', $data['create_time']); ?></span>
+                            <span class="col-lg-6 col-xs-6 col-md-6 col-sm-6 text-left text-grayh">文章作者 : <?php echo $data['author']; ?></span>
+                            <span class="col-lg-6 col-xs-6 col-md-6 col-sm-6 text-right text-grayh">发布时间 : <?php echo date('m-d-Y', $data['create_time']); ?></span>
                         </p>
                         <p class="line bg-silvery"></p>
                         <div class="post-content">

@@ -33,8 +33,11 @@ $this->menu=array(
 		'cate_name',
 		'cate_english',
 		'description',
-		'cate_image',
-                'cate_order',
+		'cate_image',	
+                array(
+                    'name' => 'type',
+                    'value' => 'Categorise::model()->getType( "$data->type" )',
+                ),
                 array(
                     'name' => 'visible',
                     'value' => 'Categorise::model()->getVisible( "$data->visible" )',

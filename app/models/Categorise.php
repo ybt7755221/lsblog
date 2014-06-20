@@ -205,9 +205,12 @@ class Categorise extends CActiveRecord
                                     $items[$nums]['url'] = Yii::app()->createAbsoluteUrl( '/posts/index',array( 'id' => $result['id'] ) );
                                     break;
                             case '2' : 
-                                    $items[$nums]['url'] = Yii::app()->createAbsoluteUrl( $result['url'] );
+                                    $items[$nums]['url'] = Yii::app()->baseUrl.$result['url'];
                                     break;
                             case '3' : 
+                                    $items[$nums]['url'] = $result['url'];
+                                    break;
+                            case '4' : 
                                     $items[$nums]['url'] = Yii::app()->createAbsoluteUrl( $result['url'] );
                                     break;
                             default : 
