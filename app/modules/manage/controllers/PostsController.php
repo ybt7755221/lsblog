@@ -61,7 +61,7 @@ class PostsController extends AController
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['Posts']))
 		{
             //var_dump( $_POST ); exit;

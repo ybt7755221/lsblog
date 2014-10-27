@@ -112,14 +112,14 @@ class Tags extends CActiveRecord
         $tagArr = explode ( ',', $tag);
         $num = count( $tagArr ) < 10 ? count( $tagArr ) : 10 ;
         $idIn = '';
-        for ( $i = 0; $i < $num; $i++ )
-        {
-            $sql = 'SELECT `id` FROM `{{tags}}` WHERE `tagname` = :tagname';
-            $res = Yii::app()->db->createCommand( $sql )->bindValue( ':tagname', trim( $tagArr[$i] ), PDO::PARAM_STR )->queryRow();
-            if ( $res )
-                $idIn .= $res['id'].',';
-            else
-                $idIn .= $this->createTag( trim( $tagArr[$i] ) );
+        foreach ($tagArr as $val){
+	        	$sql = 'SELECT `id` FROM `{{tags}}` WHERE `tagname` = :tagname';
+	        	$res = Yii::app()->db->createCommand( $sql )->bindValue( ':tagname', trim( $val ), PDO::PARAM_STR )->queryRow();
+	        	if ( $res )
+	        		$idIn .= $res['id'].',';
+	        	else
+	        		$idIn .= $this->createTag( trim( $val ) );
+	        		$idIn .= ',';
         }
         $idIn = trim( $idIn, ',');
         return $idIn;
