@@ -31,12 +31,12 @@
         			'items'=>array(
                         array('label'=>'Home', 'url'=>array( Yii::app()->homeUrl ), 'visible'=>!Yii::app()->user->isGuest),
                         array('label'=>'Users', 'url'=>array('/manage/Users/index'), 'visible'=>!Yii::app()->user->isGuest),
-                        array('label'=>'categorise', 'url'=>array('/manage/categorise/index'), 'visible'=>!Yii::app()->user->isGuest),
+                        array('label'=>'Categorise', 'url'=>array('/manage/categorise/index'), 'visible'=>!Yii::app()->user->isGuest),
                         array('label'=>'Posts', 'url'=>array('/manage/posts/index'), 'visible'=>!Yii::app()->user->isGuest),
         				array('label'=>'Comments', 'url'=>array('/manage/Comments/index'), 'visible'=>!Yii::app()->user->isGuest),
-        				array('label'=>'ablum', 'url'=>array('/manage/ablum/index'), 'visible'=>!Yii::app()->user->isGuest),
+        				array('label'=>'Ablum', 'url'=>array('/manage/ablum/index'), 'visible'=>!Yii::app()->user->isGuest),
                         array('label'=>'Tags', 'url'=>array('/manage/tags/index'), 'visible'=>!Yii::app()->user->isGuest),
-                        array('label'=>'links', 'url'=>array('/manage/links/index'), 'visible'=>!Yii::app()->user->isGuest),
+                        array('label'=>'Links', 'url'=>array('/manage/links/index'), 'visible'=>!Yii::app()->user->isGuest),
        				),
                     'htmlOptions' => array('class' => 'nav navbar-nav'),
         		)); ?>
