@@ -15,7 +15,7 @@ class TagsController extends Controller
 	{
         $limit = $this->_page;
         $id = $id*1;
-		$postSql = "SELECT p.`id`, p.`title`, p.`excerpt`, c.`cate_name`, c.`cate_english`, p.`tag_id`, p.`create_time` FROM `{{posts}}` p LEFT JOIN `{{categorise}}` c ON p.`cate_id` = c.`id` WHERE `tag_id` LIKE '%".$id."%' ORDER BY `type` DESC, `id` DESC LIMIT :limit";
+		$postSql = "SELECT p.`id`, p.`title`, p.`excerpt`, c.`cate_name`, c.`cate_english`, p.`tag_id`, p.`create_time` FROM `{{posts}}` p LEFT JOIN `{{categorise}}` c ON p.`cate_id` = c.`id` WHERE `tag_id` LIKE '%".$id."%' ORDER BY p.`type` DESC, `id` DESC LIMIT :limit";
         $result = Yii::app()->db->createCommand( $postSql );
         $result->bindValue( ':limit', $limit, PDO::PARAM_INT );
         $postsArr = $result->queryAll();
