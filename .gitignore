@@ -2,3 +2,6 @@
 nbproject/*
 app/runtime/*
 assets
+.DS_Store
+.buildpath
+.project
