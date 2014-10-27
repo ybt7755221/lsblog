@@ -21,7 +21,7 @@ echo Yii::app()->homeUrl;
     <div class="col-sm-12 col-md-12 col-xs-12 col-lg-12" style="margin-bottom: 10px;">
         <div class="row bg-white">
             <div class="col-xs-12 col-md-4 col-lg-4 col-sm-12" style="padding:0px;">
-                <img src="<?php echo Yii::app()->baseUrl.$val['cate_image']; ?>" alt="<?php echo CHtml::encode( $val['cate_name'] ); ?>" style="width:360px; height:240px; margin: 0 auto;" class="img-responsive" alt="Responsive image" />
+                <img src="<?php echo Yii::app()->baseUrl.$val['cate_image']; ?>" alt="<?php echo CHtml::encode( $val['cate_name'] ); ?>" style="width:390px; height:240px; margin: 0 auto;" class="img-responsive" alt="Responsive image" />
             </div>
             <div class="col-xs-12 col-md-8 col-lg-8 col-sm-12 text-center">
                 <h3><?php echo CHtml::encode( $val['cate_name'] ); ?></h3>
