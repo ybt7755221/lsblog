@@ -41,10 +41,10 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
-		/** uncomment the following to enable URLs in path-format*/
+		/** uncomment the following to enable URLs in path-format
 		'cache'=>array(
             'class'=>'system.caching.CFileCache',
-        ),
+        ),*/
 		'urlManager'=>array(
 			'urlFormat'=>'path',
             //'showScriptName' => false,
