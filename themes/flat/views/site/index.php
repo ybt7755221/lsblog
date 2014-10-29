@@ -1,7 +1,6 @@
 <?php
 $this->pageTitle=Yii::app()->name;
 $this->renderPartial( '_topNav', array('cate_id' => '' ) );
-echo Yii::app()->homeUrl;
 ?>
 <div class="user_top">
         <h1><?php echo Yii::app()->user->name; ?></h1>
