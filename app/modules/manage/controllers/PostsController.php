@@ -64,14 +64,12 @@ class PostsController extends AController
 		
 		if(isset($_POST['Posts']))
 		{
-            var_dump( $_POST );
 			$model->attributes=$_POST['Posts'];
             $model->comment_count = 0;
             $model->create_time = time();
             $model->post_password = md5('lsblog');
             $model->author = Yii::app()->user->id;
             $model->tag_id = Tags::model()->getTagName( trim( $_POST['Posts']['tag_id'] ) );
-            echo $model->type; exit;
 			if($model->save())
 				$this->redirect( array( 'index' ) );
 		}
