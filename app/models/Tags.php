@@ -115,9 +115,9 @@ class Tags extends CActiveRecord
         foreach ($tagArr as $val){
 	        	$sql = 'SELECT `id` FROM `{{tags}}` WHERE `tagname` = :tagname';
 	        	$res = Yii::app()->db->createCommand( $sql )->bindValue( ':tagname', trim( $val ), PDO::PARAM_STR )->queryRow();
-	        	if ( $res )
+	        	if ( $res ) {
 	        		$idIn .= $res['id'].',';
-	        	else{
+	        	}else{
 	        		$idIn .= $this->createTag( trim( $val ) );
 	        		$idIn .= ',';
 	        	}
