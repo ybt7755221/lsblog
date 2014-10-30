@@ -113,6 +113,7 @@ class Tags extends CActiveRecord
         $num = count( $tagArr ) < 10 ? count( $tagArr ) : 10 ;
         $idIn = '';
         foreach ($tagArr as $val){
+        	if (!empty(trim($val))){
 	        	$sql = 'SELECT `id` FROM `{{tags}}` WHERE `tagname` = :tagname';
 	        	$res = Yii::app()->db->createCommand( $sql )->bindValue( ':tagname', trim( $val ), PDO::PARAM_STR )->queryRow();
 	        	if ( $res ) {
@@ -121,6 +122,7 @@ class Tags extends CActiveRecord
 	        		$idIn .= $this->createTag( trim( $val ) );
 	        		$idIn .= ',';
 	        	}
+        	}
         }
         $idIn = trim( $idIn, ',');
         return $idIn;

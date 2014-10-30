@@ -99,7 +99,8 @@ class SiteController extends AController
     
     public function actionDelCache()
     {
-        Yii::app()->cache->flush();
+    	if (Yii::app()->cache)
+        	Yii::app()->cache->flush();
         $this->redirect( array( Yii::app()->homeUrl ) );
     }
 }
